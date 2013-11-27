@@ -35,7 +35,7 @@ app.get('/drummond/login', function(req, res) {
     request.get(url + '?username=' + username + '&password=' + password).pipe(res);
   }
   else {
-    throw('Username and Password Required');
+    throw('Username and Password Required', 'Username and Password Required');
   }
 });
 
@@ -216,7 +216,7 @@ app.get('/rssfeed', function(req, res) {
 
 
 app.all('*', function(req, res) {
-  throw('Not Implemented');
+  throw('Not Implemented', 'Not Implemented');
 });
 
 var server = https.createServer(options, app);
