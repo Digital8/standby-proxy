@@ -13,11 +13,11 @@ app.use(app.router);
 app.use(express.errorHandler());
 
 var options = {
-  key: fs.readFileSync('key.pem', 'utf8'),
-  cert: fs.readFileSync('cert.pem', 'utf8')
+  key: fs.readFileSync('./key.pem', 'utf8'),
+  cert: fs.readFileSync('./cert.pem', 'utf8')
 }
 
-var jquery = fs.readFileSync('jquery.min.js').toString();
+var jquery = fs.readFileSync('./jquery.min.js').toString();
 
 
 
@@ -89,7 +89,7 @@ var members = {};
 //load the members
 console.log('Loading Members');
 
-new lazy(fs.createReadStream('members.tab')).lines.forEach(function(line) {
+new lazy(fs.createReadStream('./members.tab')).lines.forEach(function(line) {
   var member = line.toString().split(/\t/);
   member[3] = parseInt(member[3]);
   members[member[3]] = {
