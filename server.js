@@ -208,7 +208,7 @@ app.get('/rssfeed', function(req, res) {
   res.set('Content-Type', 'application/json');
   res.send(rssFeedCache.data);
 
-  if( (rssFeedCache.time + 1 * 60000) < now ) {
+  if( (rssFeedCache.time + 30 * 60000) < now ) {
     console.log('RSS Feed Cache too old');
     getFeed();
   }
