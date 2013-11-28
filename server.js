@@ -107,8 +107,9 @@ new lazy(fs.createReadStream(__dirname + '/members.tab')).lines.forEach(function
 
 app.get('/drummond/member/:id', function(req, res) {
   res.set('Content-Type', 'application/json');
-  if(members[req.params.id]) {
-    res.send(members[parseInt(req.params.id)]);
+  var memberid = parseInt(req.params.id);
+  if(members[memberid]) {
+    res.send(members[memberid]);
   }
   else {
     console.log('Member not Found');
