@@ -161,16 +161,22 @@ var fetchImages = function() {
 
   }
 
-  async.each(rssFeed['data']['rss']['channel'][0]['item'], fetchImage, function(err) {
-    if(err) {
-      console.log('Error fetching images');
-      console.dir(err);
-    }
-    else {
-      console.log('RSS Loaded');
-      rssFeedCache = JSON.parse(JSON.stringify(rssFeed));
-    }
-  });
+  try {
+    async.each(rssFeed['data']['rss']['channel'][0]['item'], fetchImage, function(err) {
+      if(err) {
+        console.log('Error fetching images');
+        console.dir(err);
+      }
+      else {
+        console.log('RSS Loaded');
+        rssFeedCache = JSON.parse(JSON.stringify(rssFeed));
+      }
+    });
+  }
+  catch(err) {
+    console.log('News Feed Was empty');
+    rssFeedCache = JSON.parse('{}');
+  }
 }
 
 var getFeed = function() {
