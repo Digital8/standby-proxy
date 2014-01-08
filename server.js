@@ -150,7 +150,7 @@ var fetchImages = function() {
         }
         else if (youtube.length) {
           var pieces = youtube.attr('src').split('/');
-          src = 'http://i1.ytimg.com/vi/' + pieces[pieces.length - 1] + '/maxresdefault.jpg';
+          src = 'http://img.youtube.com/vi/' + pieces[pieces.length - 1] + '/maxresdefault.jpg';
         }
 
         console.log(src);
