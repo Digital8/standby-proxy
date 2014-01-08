@@ -212,7 +212,11 @@ app.get('/rssfeed', function(req, res) {
   var now = (new Date).getTime();
 
   res.set('Content-Type', 'application/json');
-  res.send(rssFeedCache.data);
+
+  //this may or may-not patch a bug
+  //i found an issue where the RSS feed was down when the app restarted
+  //there was something causing an exception stopping the feed cache from updating
+  res.send(rssFeedCache.data || "Feed Empty");
 
   if( (rssFeedCache.time + 30 * 60000) < now ) {
     console.log('RSS Feed Cache too old');
